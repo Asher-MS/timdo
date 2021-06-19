@@ -54,7 +54,7 @@ function App() {
     <Button type="secondary" onClick={()=>{setVisible('true')}}>Add Task</Button>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})}
+    {/* {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})} */}
     
 
     </Grid.Container>

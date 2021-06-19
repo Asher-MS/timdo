@@ -9,7 +9,7 @@ return (
         <Modal.Title>Timer</Modal.Title>
         
         <Modal.Content>
-          <Row justify="center"> 
+          {/* <Row justify="center"> 
           <Card hoverable> <Row justify="center"><Text h3>{props.content}</Text></Row></Card>
          
          
@@ -23,10 +23,10 @@ return (
          
           <Timer time={props.date}></Timer>
           
-          </Row>
+          </Row> */}
          
 
-          <Cam></Cam>
+          {/* <Cam></Cam> */}
 
         </Modal.Content>
         
