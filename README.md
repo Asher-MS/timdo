@@ -67,6 +67,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
 
-![](public\assets\Capture-removebg-preview.png)
+![](public/assets/Capture-removebg-preview.png)
 
-![](public\assets\tagline.png=2500x2500)
+<img src="public/assets/tagline.png" width=1000 height=300/>
+
+## Setup
+```
+git clone https://github.com/Asher-MS/timdo.git
+cd timdo
+npm install
+npm start
+```
+This will start your development server at <a href="http://localhost:3000">http://localhost:3000</a>
+
+
+
+
