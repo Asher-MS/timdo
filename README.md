@@ -86,6 +86,8 @@ and the a library named <a href="https://react.geist-ui.dev/">geist-ui</a> is us
 Timdo also has a backend which is built using <a href="https://www.djangoproject.com/">Django</a>
 and uses <a href="https://www.sqlite.org/index.html">Sqllite</a> as a database.<br>
 the front-end communicates with backend using an API which uses Json to carry data
+<br><br>
+The Machine learning model is built using <a href="https://teachablemachine.withgoogle.com/">google's teachable machine</a>
 
 ## Setup
 
