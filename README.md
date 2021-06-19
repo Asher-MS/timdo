@@ -67,19 +67,33 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
 
-![](public/assets/Capture-removebg-preview.png)
+<p align="center">
+<img src="public/assets/Capture-removebg-preview.png"></img>
+</p>
+<p align="center">
+<img src="public/assets/tagline.png" width=600 height=60/>
+</p>
 
-<img src="public/assets/tagline.png" width=1000 height=300/>
+- Timdo is an web-app that helps the user to organise and make full use of his/her study time.
+- Timdo is basically a timer app that helps you organise your study times.
+- it also has a focus meter which uses machine learning to analyse your level of focus and alert you when necessary.
+
+# Technologies Used
+
+The front-end of timdo is built with <a href="https://reactjs.org/">react-js</a>
+and the a library named <a href="https://react.geist-ui.dev/">geist-ui</a> is used for bootstrapping.
+<br><br>
+Timdo also has a backend which is built using <a href="https://www.djangoproject.com/">Django</a>
+and uses <a href="https://www.sqlite.org/index.html">Sqllite</a> as a database.<br>
+the front-end communicates with backend using an API which uses Json to carry data
 
 ## Setup
+
 ```
 git clone https://github.com/Asher-MS/timdo.git
 cd timdo
 npm install
 npm start
 ```
+
 This will start your development server at <a href="http://localhost:3000">http://localhost:3000</a>
-
-
-
-
