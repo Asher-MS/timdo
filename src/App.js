@@ -1,16 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-import { GeistProvider, CssBaseline,Image,Card,Grid,Button,Spacer,useModal } from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Card,Grid,Button,Spacer,useModal,Modal,Text } from '@geist-ui/react'
 import React,{useState,useEffect} from 'react'
 import Task from './components/task'
 import Cam from './components/cam';
 import Addtodo from './components/AddTodo';
 import TaskTimer from './components/TaskTimer';
+import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 function App() {
   let [tasks,setTasks]=useState([{title:"Sample",body:"Sample",date:"Sample"}]);
   
   const { visible, setVisible, bindings } = useModal();
+  const [statep, setStatep] = useState(false)
+  const handler = () => setStatep(true)
+  const closeHandler = (event) => {
+    setStatep(false)
+    console.log('closed')
+  }
+  
+
+  console.log(setVisible);
+  console.log(useModal());
+  // const [visiblep,setVisiblep]=useState(false);
   const   API_URL="http://127.0.0.1:8000/api/"
   
   let handleAdd=function(title,content,duration){
@@ -51,7 +63,10 @@ function App() {
     <CssBaseline />
     <Image width={200} height={200} src="./assets/Capture-removebg-preview.png"/>
     <Spacer y={1}/>
-    <Button type="secondary" onClick={()=>{setVisible('true')}}>Add Task</Button>
+    <Button type="success" onClick={handler}>Pomdoro Timer</Button>
+    <Spacer y={1}/>
+
+    <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
     {/* {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})} */}
@@ -67,6 +82,7 @@ function App() {
     </GeistProvider>
 
      <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
+     <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
      
     </div>
   );
