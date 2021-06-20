@@ -1,17 +1,74 @@
 import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,Spacer,Row,Badge } from '@geist-ui/react'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 function Pomdoro(props){
     const [sessionMins,setSessionMins]=useState(5);
     const [breakMins,setBreakMins]=useState(30);
     const [displayMin,setDisplayMin]=useState(0);
     const [displaySec,setDisplaySec]=useState(0);
+    const [running,setRunning]=useState();
+    let [currentActivity,setCurrentActivity]=useState('session');
+    let curract='session';
+    const [badgeType,setBadgeType]=useState('secondary')
+    
+    let duration=sessionMins*60;
+    const [session,setSession]=useState(1);
+    let setDisplay=function(sec){
+        if(sec==1){
+            changeActivity();        
+        }
+        setDisplayMin(Math.floor(sec/60));
+        setDisplaySec(sec%60);
+        console.log(sec);
+    }
+    
+    
+    
+    let changeActivity=function(){
+        if(curract=='session'){
+            
+            setCurrentActivity('break');
+            curract='break';
+            setBadgeType('success');
+            setSession(session+1);
+            duration=breakMins*60;
+        }else{
+            
+            setCurrentActivity('session');
+            curract='session';
+            setBadgeType('secondary');
+            duration=sessionMins*60;
+
+            
+        }
+        
+        
+    }
+    let loop1;
     let handleStart=function(){
         console.log("Timer Started");
+        setRunning(true);
+        
+        
+       
+    
+       window.loop1=setInterval(()=>{
+            if(running==false){
+                clearInterval(loop1);
+            }
+            setDisplay(duration);
+            duration=duration-1;
+            console.log(currentActivity);
+        },1000);
+
         //Implement the Pomdoro Timer
     }
     let handleStop=function(){
         console.log("TImer Stoped");
+        setRunning(false);
+        clearInterval(window.loop1);
+        duration=0;
+        setDisplay(0);
         //implement the Stop function
     }
 
@@ -22,7 +79,7 @@ function Pomdoro(props){
         <Modal.Content>
             <Text h3>Pomdoro Timer</Text>
             <Row>
-                <Input size='mini'onChange={(e)=>{setSessionMins(e.target.value)}}/>
+                <Input size='mini' onChange={(e)=>{setSessionMins(e.target.value)}}/>
                 <Spacer x={5}/>
                 <Input size='mini' onChange={(e)=>{setBreakMins(e.target.value)}}/>
             </Row>
@@ -34,10 +91,10 @@ function Pomdoro(props){
             </Row>
             <Spacer y={3}/>
             <Row justify="center">
-            <Text h3>Session</Text>
+            <Text h2>{currentActivity}{currentActivity=='session'?session:""}</Text>
             </Row>
             <Row justify="center">
-                <Badge><Text h1>{displayMin}:{displaySec}</Text></Badge>
+                <Badge type={badgeType}><Text h1>{displayMin}:{displaySec}</Text></Badge>
 
             </Row>
             <Spacer y={3}/>

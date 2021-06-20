@@ -21,7 +21,7 @@ function Timer(props){
         setHours(Math.floor(secs/3600));
         setMinutes(Math.floor((secs%3600)/60));
         
-        if(hours==0 && minutes==0){
+        if(hours===0 && minutes===0){
             clearInterval(foo);
         }
         },1000);

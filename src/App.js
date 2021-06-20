@@ -20,8 +20,8 @@ function App() {
   }
   
 
-  console.log(setVisible);
-  console.log(useModal());
+  // console.log(setVisible);
+  // console.log(useModal());
   // const [visiblep,setVisiblep]=useState(false);
   const   API_URL="http://127.0.0.1:8000/api/"
   
