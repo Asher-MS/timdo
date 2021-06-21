@@ -13,10 +13,16 @@ function Quote(props){
     let updateQuote=function(){
         let quotes=axios.get("https://type.fit/api/quotes").then((res)=>{
             // console.log(res.data);
-            setQuote(res.data[Math.floor(Math.random()*20)]);
+            setQuote(res.data[Math.floor(Math.random()*200)]);
         })
 
     }
+    useEffect(()=>{
+        axios.get("https://type.fit/api/quotes").then((res)=>{
+            // console.log(res.data);
+            setQuote(res.data[Math.floor(Math.random()*20)]);
+        })
+    },[])
     
     
 
@@ -50,10 +56,12 @@ function Quote(props){
                     <Text>-{quote["author"]}</Text>
 
                 </Row>
-                <Spacer y={10}/>
+                {/* <Spacer y={10}/> */}
 
             </div>
+            <Spacer y={2}/>
             <Row justify="center">
+                
             <Button type="success-light" onClick={handleRefresh}>Refresh</Button>
             </Row>
 
