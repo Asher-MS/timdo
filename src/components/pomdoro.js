@@ -2,8 +2,8 @@ import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,
 import React,{useState,useEffect} from 'react'
 
 function Pomdoro(props){
-    const [sessionMins,setSessionMins]=useState(5);
-    const [breakMins,setBreakMins]=useState(30);
+    const [sessionMins,setSessionMins]=useState(25);
+    const [breakMins,setBreakMins]=useState(5);
     const [displayMin,setDisplayMin]=useState(0);
     const [displaySec,setDisplaySec]=useState(0);
     const [running,setRunning]=useState();
@@ -79,9 +79,9 @@ function Pomdoro(props){
         <Modal.Content>
             <Text h3>Pomdoro Timer</Text>
             <Row>
-                <Input size='mini' onChange={(e)=>{setSessionMins(e.target.value)}}/>
+                <Input size='mini' placeholder={25} onChange={(e)=>{setSessionMins(e.target.value)}}/>
                 <Spacer x={5}/>
-                <Input size='mini' onChange={(e)=>{setBreakMins(e.target.value)}}/>
+                <Input size='mini' placeholder={5} onChange={(e)=>{setBreakMins(e.target.value)}}/>
             </Row>
             
             <Row>

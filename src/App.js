@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { GeistProvider, CssBaseline,Image,Card,Grid,Button,Spacer,useModal,Modal,Text } from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Card,Grid,Button,Spacer,useModal,Modal,Text,Toggle,Row } from '@geist-ui/react'
+import { Sun,Moon } from '@geist-ui/react-icons'
+
 import React,{useState,useEffect} from 'react'
 import Task from './components/task'
 import Cam from './components/cam';
@@ -10,6 +12,12 @@ import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 import Quote from './components/quotes';
 function App() {
+  const [themeType,setThemeType]=useState("light");
+
+  let themeChange=function(){
+    console.log("Theme Change");
+    setThemeType(themeType=="light"?"dark":"light");
+  }
   let [tasks,setTasks]=useState([{title:"Sample",body:"Sample",date:"Sample"}]);
   
   const { visible, setVisible, bindings } = useModal();
@@ -66,9 +74,16 @@ function App() {
   
   return (
     <div className="App">
-    <GeistProvider>
+    <GeistProvider themeType={themeType}>
     <CssBaseline />
-    <Image width={200} height={200} src="./assets/Capture-removebg-preview.png"/>
+    <Image width={200} height={200} src={themeType=="light"?"./assets/Capture-removebg-preview.png":"./assets/Capture-removebg-preview_darkmode.png"}/>
+    <Row justify="center">
+    <Row justify="center"> 
+    <Text><Toggle onChange={themeChange}/>   Dark mode {themeType=="light"?<Sun/>:<Moon/>}</Text>
+    </Row>
+    <Spacer y={1}/>
+    
+    </Row>
     <Spacer y={1}/>
     <Button type="success" onClick={handler}>Pomdoro Timer</Button>
     <Spacer y={1}/>
