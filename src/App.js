@@ -8,15 +8,22 @@ import Addtodo from './components/AddTodo';
 import TaskTimer from './components/TaskTimer';
 import Pomdoro from './components/pomdoro';
 import axios from 'axios';
+import Quote from './components/quotes';
 function App() {
   let [tasks,setTasks]=useState([{title:"Sample",body:"Sample",date:"Sample"}]);
   
   const { visible, setVisible, bindings } = useModal();
-  const [statep, setStatep] = useState(false)
-  const handler = () => setStatep(true)
+  const [statep, setStatep] = useState(false);
+  const [stateq, setStateq] = useState(false);
+  const handler = () => setStatep(true);
+  const handlerq=()=>{setStateq(true)};
   const closeHandler = (event) => {
     setStatep(false)
     console.log('closed')
+  }
+  const closeHandlerq=(event)=>{
+    setStateq(false);
+    console.log("Closed");
   }
   
 
@@ -65,6 +72,9 @@ function App() {
     <Spacer y={1}/>
     <Button type="success" onClick={handler}>Pomdoro Timer</Button>
     <Spacer y={1}/>
+    <Button type="success-light" onClick={handlerq}>Inspiational Quotes</Button>
+    <br/>
+    <Spacer y={1}/>
 
     <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
     <Spacer y={3}/>
@@ -83,6 +93,7 @@ function App() {
 
      <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
      <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
+     <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
      
     </div>
   );
