@@ -1,4 +1,4 @@
-import { GeistProvider, CssBaseline,Image,Card,Capacity,Badge,Text,Row,Progress,Spacer} from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Card,Capacity,Badge,Text,Row,Progress,Spacer, Button} from '@geist-ui/react'
 import React,{useState} from 'react'
 import * as tf from '@tensorflow/tfjs';
 import * as tmPose from '@teachablemachine/pose';
@@ -7,6 +7,8 @@ import * as tmPose from '@teachablemachine/pose';
 function Cam(){
     const URL = "https://teachablemachine.withgoogle.com/models/bs8bINSVt/";
     let model, webcam, ctx, labelContainer, maxPredictions;
+    const [focusLevel,setFocusLevel]=useState(1);
+    const [focusBadge,setFocusBadge]=useState('Focused');
 
     async function init() {
         const modelURL = URL + "model.json";
@@ -30,9 +32,10 @@ function Cam(){
         const canvas = document.getElementById("canvas");
         canvas.width = size; canvas.height = size;
         ctx = canvas.getContext("2d");
-        labelContainer = document.getElementById("label-container");
+        // labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
-            labelContainer.appendChild(document.createElement("div"));
+            // labelContainer.appendChild(document.createElement("div"));
+
         }
     }
 
@@ -50,9 +53,17 @@ function Cam(){
         const prediction = await model.predict(posenetOutput);
 
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+            // const classPrediction =
+                // prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            // labelContainer.childNodes[i].innerHTML = classPrediction;
+            
+
+        }
+        setFocusLevel(prediction[0].probability.toFixed(2));
+        if(prediction[0].probability.toFixed(2)<0.5){
+            setFocusBadge('Not Focused');
+        }else{
+            setFocusBadge('Focused');
         }
 
         // finally draw the poses
@@ -73,11 +84,24 @@ function Cam(){
     
     
     return (
+        <Row justify="center">
         <div className="Cam">
-            <div>Teachable Machine Pose Model</div>
-            <button type="button" onClick={init}>Start</button>
+            <Row justify='center'>
+                <Spacer y={3}/>
+            <Text h3>Are you Focused?</Text>
+            </Row>
+            <Row justify='center'>
+            <Button type="secondary" onClick={init}>Start</Button>
+            </Row>
             <div><canvas id="canvas"></canvas></div>
-                <div id="label-container"></div>
+            <Spacer y={2}/>
+            <Row justify='center'>
+            <Badge size="large" type={focusBadge=='Focused'?'secondary':'error'}>{focusBadge}</Badge>
+            </Row>
+            <Spacer y={2}/>
+            <Progress max={1} value={focusLevel} />
+         
+                
                 {/* <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script> */}
                 
@@ -88,7 +112,7 @@ function Cam(){
 
 
         </div>
-
+        </Row>
 
 
 

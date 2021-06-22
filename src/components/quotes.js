@@ -20,7 +20,7 @@ function Quote(props){
     useEffect(()=>{
         axios.get("https://type.fit/api/quotes").then((res)=>{
             // console.log(res.data);
-            setQuote(res.data[Math.floor(Math.random()*20)]);
+            setQuote(res.data[Math.floor(Math.random()*200)]);
         })
     },[])
     

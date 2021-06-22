@@ -1,4 +1,4 @@
-import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,Spacer,Row,Badge } from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,Spacer,Row,Badge,Progress } from '@geist-ui/react'
 import React,{useState,useEffect} from 'react'
 
 function Pomdoro(props){
@@ -7,11 +7,14 @@ function Pomdoro(props){
     const [displayMin,setDisplayMin]=useState(0);
     const [displaySec,setDisplaySec]=useState(0);
     const [running,setRunning]=useState();
+    const [progress,setProgress]=useState(0);
+    const [progressType,setProgressType]=useState('secondary');
     let [currentActivity,setCurrentActivity]=useState('session');
     let curract='session';
     const [badgeType,setBadgeType]=useState('secondary')
     
     let duration=sessionMins*60;
+    let totalduration=duration;
     const [session,setSession]=useState(1);
     let setDisplay=function(sec){
         if(sec==1){
@@ -26,18 +29,20 @@ function Pomdoro(props){
     
     let changeActivity=function(){
         if(curract=='session'){
-            
+            setProgressType('success')
             setCurrentActivity('break');
             curract='break';
             setBadgeType('success');
             setSession(session+1);
             duration=breakMins*60;
+            totalduration=duration;
         }else{
-            
+            setProgressType('secondary');
             setCurrentActivity('session');
             curract='session';
             setBadgeType('secondary');
             duration=sessionMins*60;
+            totalduration=duration;
 
             
         }
@@ -58,6 +63,7 @@ function Pomdoro(props){
             }
             setDisplay(duration);
             duration=duration-1;
+            setProgress(duration);
             console.log(currentActivity);
         },1000);
 
@@ -97,6 +103,8 @@ function Pomdoro(props){
                 <Badge type={badgeType}><Text h1>{displayMin}:{displaySec}</Text></Badge>
 
             </Row>
+            <Spacer y={3}/>
+            <Progress type={progressType} value={progress} max={totalduration}/>
             <Spacer y={3}/>
             <Row>
                 <Button type="success" size="small" onClick={handleStart}>Start</Button>

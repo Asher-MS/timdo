@@ -38,7 +38,7 @@ function App() {
   // console.log(setVisible);
   // console.log(useModal());
   // const [visiblep,setVisiblep]=useState(false);
-  const   API_URL="http://127.0.0.1:8000/api/"
+  const   API_URL="https://timdo-api.herokuapp.com/api/ "
   
   let handleAdd=function(title,content,duration){
     axios.post(API_URL+"all",{title:title,body:content,date:duration}).then(()=>{updateTasks();});
@@ -94,7 +94,7 @@ function App() {
     <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {/* {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})} */}
+    {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})}
     
 
     </Grid.Container>
