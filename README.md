@@ -89,7 +89,7 @@ and uses <a href="https://www.sqlite.org/index.html">Sqllite</a> as a database.<
 the front-end communicates with backend using an API which uses Json to carry data<br>
 <a href="https://github.com/Asher-MS/timdo_api">Link to the API repo</a>
 <br><br>
-The API is hosted <a href="https://timdo-api.herokuapp.com/api/">here</a>
+The API is hosted <a href="https://timdo-api.herokuapp.com/api/all">here</a>
 <br><br>
 The Machine learning model is built using <a href="https://teachablemachine.withgoogle.com/">google's teachable machine</a>
 
