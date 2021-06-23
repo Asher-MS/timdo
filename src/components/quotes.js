@@ -1,5 +1,5 @@
 import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,Spacer,Row,Badge } from '@geist-ui/react'
-import { imag } from '@tensorflow/tfjs';
+import { image } from '@tensorflow/tfjs';
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 

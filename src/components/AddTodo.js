@@ -15,7 +15,9 @@ function Addtodo(props){
         
         <Modal.Content>
             
-          <Input placeholder="Task" onChange={(e)=>{setTitle(e.target.value)}}><Text h5>Title</Text></Input>
+          <Input placeholder="Title (No Spaces)" size="large" onChange={(e)=>{setTitle(e.target.value)}}><Text h5>Title</Text></Input>
+          <Spacer y={1}/>
+          <Text>Description</Text>
           <Textarea placeholder="Please enter a description." onChange={(e)=>{setContent(e.target.value)}}>
           
           </Textarea>

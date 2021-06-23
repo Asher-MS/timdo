@@ -38,7 +38,7 @@ function App() {
   // console.log(setVisible);
   // console.log(useModal());
   // const [visiblep,setVisiblep]=useState(false);
-  const   API_URL="https://timdo-api.herokuapp.com/api/ "
+  const   API_URL="https://timdo-api.herokuapp.com/api/"
   
   let handleAdd=function(title,content,duration){
     axios.post(API_URL+"all",{title:title,body:content,date:duration}).then(()=>{updateTasks();});
