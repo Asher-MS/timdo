@@ -74,6 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 <img src="public/assets/tagline.png" width=600 height=60/>
 </p>
 View the app <a href="https://timdo-ochre.vercel.app/">here</a>
+<br><br>
 - Timdo is an web-app that helps the user to organise and make full use of his/her study time.
 - Timdo is basically a timer app that helps you organise your study times.
 - It also has a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">pomdoro</a> timer which helps to manage you time effectively
