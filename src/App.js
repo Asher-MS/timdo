@@ -11,6 +11,7 @@ import TaskTimer from './components/TaskTimer';
 import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 import Quote from './components/quotes';
+import Music from './components/music'
 function App() {
   const [themeType,setThemeType]=useState("light");
 
@@ -23,15 +24,22 @@ function App() {
   const { visible, setVisible, bindings } = useModal();
   const [statep, setStatep] = useState(false);
   const [stateq, setStateq] = useState(false);
+  const [statem,setStatem]=useState(false);
   const handler = () => setStatep(true);
   const handlerq=()=>{setStateq(true)};
+  const handlerm=()=>{setStatem(true)};
   const closeHandler = (event) => {
     setStatep(false)
     console.log('closed')
   }
+  
   const closeHandlerq=(event)=>{
     setStateq(false);
     console.log("Closed");
+  }
+  const closeHandlerm=()=>{
+    setStatem(false);
+    console.log("Music Closed");
   }
   
 
@@ -90,6 +98,9 @@ function App() {
     <Button type="success-light" onClick={handlerq}>Inspiational Quotes</Button>
     <br/>
     <Spacer y={1}/>
+    <Button type="success-light" onClick={handlerm}>Moosic</Button>
+    <br/>
+    <Spacer y={1}/>
 
     <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
     <Spacer y={3}/>
@@ -109,6 +120,7 @@ function App() {
      <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
      <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
      <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
+     <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}></Music>
      
     </div>
   );
