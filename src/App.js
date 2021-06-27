@@ -12,7 +12,21 @@ import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 import Quote from './components/quotes';
 import Music from './components/music'
+
 function App() {
+  // let fullscreen=function(){
+  //   // if(document.body.fullscreen==true){
+  //   // document.body.requestFullscreen();
+  //   // }else{
+  //   //   document.body.exitFullscreen();
+  //   // }
+  //   // console.log(document.fullscreen)
+  //   console.log(document.fullscreenElement);
+  //   if(document.fullscreenElement){
+  //   document.body.requestFullscreen();
+  //   }
+  // }
+  
   const [themeType,setThemeType]=useState("light");
 
   let themeChange=function(){
@@ -78,6 +92,7 @@ function App() {
     })
 
   }
+  
 
   
   return (
@@ -89,38 +104,36 @@ function App() {
     <Row justify="center"> 
     <Text><Toggle onChange={themeChange}/>   Dark mode {themeType=="light"?<Sun/>:<Moon/>}</Text>
     </Row>
-    <Spacer y={1}/>
+    {/* <Button onClick={fullscreen}>Full</Button> */}
     
     </Row>
-    <Spacer y={1}/>
+    
+    <Row justify='center'>
     <Button type="success" onClick={handler}>Pomdoro Timer</Button>
     <Spacer y={1}/>
     <Button type="success-light" onClick={handlerq}>Inspiational Quotes</Button>
     <br/>
     <Spacer y={1}/>
-    <Button type="success-light" onClick={handlerm}>Moosic</Button>
-    <br/>
+    <Button type="success-light" onClick={handlerm}>Music</Button>
+   
+    
+    </Row>
     <Spacer y={1}/>
-
+    <Row justify='center'>
     <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
+    </Row>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {tasks.map(function(task){return <Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task>})}
-    
-
+    {tasks.map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task></Grid>})}
     </Grid.Container>
-    
 
-    
-    
-      
-      
     </GeistProvider>
 
      <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
      <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
      <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
      <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}></Music>
+
      
     </div>
   );
