@@ -4,6 +4,11 @@ import Timer from './timer';
 import Cam from './cam';
 
 function TaskTimer(props){
+function stopWebcam(){
+  props.setVisible(false);
+  window.location.reload();
+ 
+}
 return (
     <Modal {...props.bindings}>
         <Modal.Title>Timer</Modal.Title>
@@ -27,7 +32,10 @@ return (
          
           <Spacer y={1}/>
           <Cam></Cam>
-
+          <Spacer y={3}/>
+          <Row justify='center'>
+          <Button type='error-light' onClick={stopWebcam}>Stop</Button>
+          </Row>
         </Modal.Content>
         
       </Modal>

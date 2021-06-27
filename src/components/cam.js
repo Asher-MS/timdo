@@ -1,4 +1,4 @@
-import { GeistProvider, CssBaseline,Image,Card,Capacity,Badge,Text,Row,Progress,Spacer, Button} from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Card,Capacity,Badge,Text,Row,Progress,Spacer, Button, Col} from '@geist-ui/react'
 import React,{useState} from 'react'
 import * as tf from '@tensorflow/tfjs';
 import * as tmPose from '@teachablemachine/pose';
@@ -9,7 +9,8 @@ function Cam(){
     let model, webcam, ctx, labelContainer, maxPredictions;
     const [focusLevel,setFocusLevel]=useState(1);
     const [focusBadge,setFocusBadge]=useState('Focused');
-
+    let webCamRunning=true;
+    
     async function init() {
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
@@ -42,6 +43,9 @@ function Cam(){
     async function loop(timestamp) {
         webcam.update(); // update the webcam frame
         await predict();
+        console.log(webCamRunning);
+        
+        
         window.requestAnimationFrame(loop);
     }
 
@@ -82,24 +86,35 @@ function Cam(){
         }
     }
     
+    // function stopWebcam(){
+    //     webCamRunning=false;
+    // }
+    
     
     return (
         <Row justify="center">
         <div className="Cam">
             <Row justify='center'>
                 <Spacer y={3}/>
+            <Col align='center'>
             <Text h3>Are you Focused?</Text>
+            
+            <Text h6><Badge>Note:</Badge>Please Turn on Hardware acceleration on your browser settings for a smooth experience</Text>
+            </Col>
             </Row>
             <Row justify='center'>
             <Button type="secondary" onClick={init}>Start</Button>
             </Row>
+            <Row justify='center'>
             <div><canvas id="canvas"></canvas></div>
+            </Row>
             <Spacer y={2}/>
             <Row justify='center'>
             <Badge size="large" type={focusBadge=='Focused'?'secondary':'error'}>{focusBadge}</Badge>
             </Row>
             <Spacer y={2}/>
             <Progress max={1} value={focusLevel} />
+            {/* <Button onClick={webcam.stop}>Stop</Button> */}
          
                 
                 {/* <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
