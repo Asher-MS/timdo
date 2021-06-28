@@ -127,7 +127,7 @@ Motivational Quotes give us a quick burst of energy and enthusiansm to achieve o
 
 ## Music
 
-Music provides a soothing and relaxing environment for studying and increased our productivity
+Music provides a soothing and relaxing environment for studying and increases our productivity
 <img src="screenshots\music.JPG"/>
 
 <br>
