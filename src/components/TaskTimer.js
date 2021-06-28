@@ -7,6 +7,7 @@ function TaskTimer(props){
 function stopWebcam(){
   props.setVisible(false);
   window.location.reload();
+  console.log("reload");
  
 }
 return (
