@@ -76,8 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 View the app <a href="https://timdo-ochre.vercel.app/">here</a>
 <br><br>
 
-
-
 - Timdo is an web-app that helps the user to organise and make full use of his/her study time.
 - Timdo is basically a timer app that helps you organise your study times.
 - It also has a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">pomdoro</a> timer which helps to manage you time effectively
@@ -107,3 +105,43 @@ npm start
 ```
 
 This will start your development server at <a href="http://localhost:3000">http://localhost:3000</a>
+
+# Features
+
+## Pomdoro Timer
+
+It helps you to manage your time using <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomdoro Technique</a>
+
+<img src="screenshots\pomdoro.JPG"/>
+
+<br>
+<br>
+
+## Inspirational Quotes
+
+Motivational Quotes give us a quick burst of energy and enthusiansm to achieve our goals
+<img src="screenshots\inspo.JPG"/>
+
+<br>
+<br>
+
+## Music
+
+Music provides a soothing and relaxing environment for studying and increased our productivity
+<img src="screenshots\music.JPG"/>
+
+<br>
+<br>
+
+## Task Tracker
+
+Users can track their academic tasks which helps them to use their time more effectively
+<img src="screenshots\timer.JPG">
+
+<br>
+<br>
+
+## Focus Analyzer
+
+It uses Machine Learning to analyze your facial and body expressions to measure your Focus level
+<img src="screenshots\focus.JPG"/>
