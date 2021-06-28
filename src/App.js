@@ -109,9 +109,10 @@ function App() {
     </Row>
     
     <Row justify='center'>
-    <Button type="success" onClick={handler}>Pomdoro Timer</Button>
-    <Spacer y={1}/>
     <Button type="success-light" onClick={handlerq}>Inspiational Quotes</Button>
+    <Spacer y={1}/>
+    
+    <Button type="success" onClick={handler}>Pomdoro Timer</Button>
     <br/>
     <Spacer y={1}/>
     <Button type="success-light" onClick={handlerm}>Music</Button>
