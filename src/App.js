@@ -13,6 +13,15 @@ import axios from 'axios';
 import Quote from './components/quotes';
 import Music from './components/music'
 
+function NoTask(){
+  return(
+    <div>
+    <Text h1>No Task!!!!</Text>
+    <Image src="https://media.giphy.com/media/Qg6cn9VrzNNKg/giphy.gif"></Image>
+    </div>
+  );
+}
+
 function App() {
   // let fullscreen=function(){
   //   // if(document.body.fullscreen==true){
@@ -64,6 +73,8 @@ function App() {
   
   let handleAdd=function(title,content,duration){
     axios.post(API_URL+"all",{title:title,body:content,date:duration}).then(()=>{updateTasks();});
+    setVisible(false);
+
   }
   let [currentTask,setCurrentTask]=useState();
   let [currentDuration,setCurrentDuration]=useState();
@@ -125,7 +136,7 @@ function App() {
     </Row>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {tasks.map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task></Grid>})}
+    {tasks.length==0?NoTask():(tasks.map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task></Grid>}))}
     </Grid.Container>
 
     </GeistProvider>
