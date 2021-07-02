@@ -148,4 +148,4 @@ It uses Machine Learning to analyze your facial and body expressions to measure 
 
 
 
-##Note: currently the webapp will not function properly on mobile devices!!
+## Note: currently the webapp will not function properly on mobile devices!!
