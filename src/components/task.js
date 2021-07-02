@@ -11,6 +11,8 @@ function Task(props){
             <h4>{props.title}</h4>
             <p>{props.body}</p>
             <p>{props.duration}</p>
+            {/* <p>{props.ip}</p> */}
+            
             <Button type="success-light" onClick={()=>{setVisible('true');}}>Start</Button>
             <Button type='error-light' onClick={()=>{props.handleDelete(props.title)}}>Delete</Button>
             </Card>

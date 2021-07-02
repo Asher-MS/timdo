@@ -5,13 +5,14 @@ import { Sun,Moon } from '@geist-ui/react-icons'
 
 import React,{useState,useEffect} from 'react'
 import Task from './components/task'
-import Cam from './components/cam';
+
 import Addtodo from './components/AddTodo';
-import TaskTimer from './components/TaskTimer';
+
 import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 import Quote from './components/quotes';
-import Music from './components/music'
+import Music from './components/music';
+
 
 function NoTask(){
   return(
@@ -37,11 +38,23 @@ function App() {
   // }
   
   const [themeType,setThemeType]=useState("light");
+  const [userIp,setUserIp]=useState('');
+  useEffect(()=>{
+    axios.get("https://api.ipify.org/?format=json").then((res)=>{
+      
+      setUserIp(res.data['ip']);
+      
+      
+
+    })
+  },[]);
+  
 
   let themeChange=function(){
     console.log("Theme Change");
     setThemeType(themeType=="light"?"dark":"light");
   }
+  
   let [tasks,setTasks]=useState([{title:"Sample",body:"Sample",date:"Sample"}]);
   
   const { visible, setVisible, bindings } = useModal();
@@ -66,13 +79,14 @@ function App() {
   }
   
 
-  // console.log(setVisible);
-  // console.log(useModal());
-  // const [visiblep,setVisiblep]=useState(false);
-  const   API_URL="https://timdo-api.herokuapp.com/api/"
   
-  let handleAdd=function(title,content,duration){
-    axios.post(API_URL+"all",{title:title,body:content,date:duration}).then(()=>{updateTasks();});
+  const   API_URL="https://timdo-api.herokuapp.com/api/"
+  // const API_URL="http://127.0.0.1:8000/api/"
+  
+  let handleAdd=function(title,content,duration,ip){
+    
+    
+    axios.post(API_URL+"all",{title:title,body:content,date:duration,ip:ip}).then(()=>{updateTasks();});
     setVisible(false);
 
   }
@@ -95,8 +109,10 @@ function App() {
   useEffect(()=>{
     axios.get(API_URL+"all").then(res=>{
       setTasks(res.data)
+      
     })
   },[]);
+ 
   const updateTasks=function(){
     axios.get(API_URL+"all").then(res=>{
       setTasks(res.data)
@@ -136,7 +152,7 @@ function App() {
     </Row>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {tasks.length==0?NoTask():(tasks.map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} handleDelete={handleDelete}></Task></Grid>}))}
+    {tasks.length==0?NoTask():(tasks.filter(task=>{return(task.ip==userIp)}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
     </Grid.Container>
 
     </GeistProvider>

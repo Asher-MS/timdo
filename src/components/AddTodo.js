@@ -1,5 +1,6 @@
 import { GeistProvider, CssBaseline,Image,Card,Modal,Input,Textarea,Text,Button,Spacer } from '@geist-ui/react'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios';
 
 
 
@@ -7,6 +8,16 @@ function Addtodo(props){
     const [title,setTitle]=useState();
     const [content,setContent]=useState();
     const [time,setTime]=useState();
+    const [userIp,setUserIp]=useState('');
+    useEffect(()=>{
+      axios.get("https://api.ipify.org/?format=json").then((res)=>{
+        
+        setUserIp(res.data['ip']);
+        
+        
+  
+      })
+    },[]);
 
 
     return(
@@ -26,7 +37,7 @@ function Addtodo(props){
           <input type="time" id="tasktime" name="appt" required onChange={(e)=>{setTime(e.target.value)}}></input>
           <br></br>
           <Spacer y={3}/>
-          <Button type='secondary-light'onClick={()=>{props.handleAdd(title,content,time);}}>Add Task</Button>
+          <Button type='secondary-light'onClick={()=>{props.handleAdd(title,content,time,userIp);}}>Add Task</Button>
         </Modal.Content>
         
       </Modal>
