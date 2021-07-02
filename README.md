@@ -145,3 +145,7 @@ Users can track their academic tasks which helps them to use their time more eff
 
 It uses Machine Learning to analyze your facial and body expressions to measure your Focus level
 <img src="screenshots\focus.JPG"/>
+
+
+
+##Note: currently the webapp will not function properly on mobile devices!!
