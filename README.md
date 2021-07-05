@@ -148,4 +148,4 @@ It uses Machine Learning to analyze your facial and body expressions to measure 
 
 
 
-## Note: currently the webapp will not function properly on mobile devices!!
+## Note: Please Turn off brave sheilds if you are using BraveBrowser for the proper functioning of the app
