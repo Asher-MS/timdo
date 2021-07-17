@@ -12,6 +12,7 @@ import Pomdoro from './components/pomdoro';
 import axios from 'axios';
 import Quote from './components/quotes';
 import Music from './components/music';
+import SpeedReader from './components/SpeedReader';
 
 
 function NoTask(){
@@ -61,9 +62,11 @@ function App() {
   const [statep, setStatep] = useState(false);
   const [stateq, setStateq] = useState(false);
   const [statem,setStatem]=useState(false);
+  const [states,setStates]=useState(false);
   const handler = () => setStatep(true);
   const handlerq=()=>{setStateq(true)};
   const handlerm=()=>{setStatem(true)};
+  const handlers=()=>{setStates(true)};
   const closeHandler = (event) => {
     setStatep(false)
     console.log('closed')
@@ -76,6 +79,9 @@ function App() {
   const closeHandlerm=()=>{
     setStatem(false);
     console.log("Music Closed");
+  }
+  const closeHandlers=()=>{
+    setStates(false);
   }
   
 
@@ -137,14 +143,21 @@ function App() {
     
     <Row justify='center'>
     <Button type="success-light" onClick={handlerq}>Inspiational Quotes</Button>
-    <Spacer y={1}/>
+    <Spacer x={1}/>
     
     <Button type="success" onClick={handler}>Pomdoro Timer</Button>
-    <br/>
-    <Spacer y={1}/>
+   
+    <Spacer x={1}/>
     <Button type="success-light" onClick={handlerm}>Music</Button>
+    
+    
    
     
+    </Row>
+    <Spacer y={1}/>
+    <Row justify='center'>
+    <Button type='success-light' onClick={handlers}>Speed reading</Button>
+
     </Row>
     <Spacer y={1}/>
     <Row justify='center'>
@@ -160,8 +173,8 @@ function App() {
      <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
      <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
      <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
-     <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}></Music>
-
+     <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}/>
+     <SpeedReader state={states} closeHandler={closeHandlers} setState={setStates}/>
      
     </div>
   );
