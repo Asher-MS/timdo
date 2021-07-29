@@ -16,12 +16,22 @@ function SpeedReader(props){
         currentWordIndex++;
         if(currentWordIndex>window.matterWords.length){
             currentWordIndex=0;
+            setPlaying(false);
+            clearInterval(window.speedReadingInterval);
         }
         
     }
     
     let matterSplit=function(matter){
         window.matterWords=matter.split(" ");
+        window.matterWords.forEach((currentWord,index,arr)=>{
+            if(currentWord.length>5 && window.matterWords[index-1]!=currentWord){
+                window.matterWords.splice(index,0,currentWord);
+            }else{
+
+            }
+        });
+        
     }
     let play=function(){
         setPlaying(!isPlaying);
