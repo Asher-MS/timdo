@@ -13,6 +13,9 @@ import axios from 'axios';
 import Quote from './components/quotes';
 import Music from './components/music';
 import SpeedReader from './components/SpeedReader';
+import Login from './components/Login';
+import Logout from './components/Logout';
+
 
 
 function NoTask(){
@@ -40,6 +43,8 @@ function App() {
   
   const [themeType,setThemeType]=useState("light");
   const [userIp,setUserIp]=useState('');
+  const [currentUser,setCurrentUser]=useState('');
+  const [profilePic,setProfilePic]=useState('');
   useEffect(()=>{
     axios.get("https://api.ipify.org/?format=json").then((res)=>{
       
@@ -89,10 +94,10 @@ function App() {
   const   API_URL="https://timdo-api.herokuapp.com/api/"
   // const API_URL="http://127.0.0.1:8000/api/"
   
-  let handleAdd=function(title,content,duration,ip){
+  let handleAdd=function(title,content,duration,email){
     
     
-    axios.post(API_URL+"all",{title:title,body:content,date:duration,ip:ip}).then(()=>{updateTasks();});
+    axios.post(API_URL+"all",{title:title,body:content,date:duration,email:email}).then(()=>{updateTasks();});
     setVisible(false);
 
   }
@@ -102,7 +107,8 @@ function App() {
     axios.get(API_URL+'delete/'+title).then(()=>{updateTasks()});
     
   }
-
+  // let testUser=setInterval(()=>{console.log(currentUser)},3000);
+  
   // let handleStart=function(title,duration){
     
   //   setCurrentTask(title);
@@ -132,7 +138,16 @@ function App() {
     <div className="App">
     <GeistProvider themeType={themeType}>
     <CssBaseline />
+    <Row justify='center'>
     <Image width={200} height={200} src={themeType=="light"?"./assets/Capture-removebg-preview.png":"./assets/Capture-removebg-preview_darkmode.png"}/>
+    </Row>
+    <Row justify='center'>
+      {currentUser==''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image src={profilePic}/>}
+      <Logout setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>
+
+    </Row>
+    
+    
     <Row justify="center">
     <Row justify="center"> 
     <Text><Toggle onChange={themeChange}/>   Dark mode {themeType=="light"?<Sun/>:<Moon/>}</Text>
@@ -165,12 +180,12 @@ function App() {
     </Row>
     <Spacer y={3}/>
     <Grid.Container gap={2} justify="center">
-    {tasks.length==0?NoTask():(tasks.filter(task=>{return(task.ip==userIp)}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
+    {tasks.length==0?NoTask():(tasks.filter((task)=>{return task.email==currentUser}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
     </Grid.Container>
 
     </GeistProvider>
 
-     <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd}/>  
+     <Addtodo visible={visible} setVisible={setVisible} bindings={bindings} handleAdd={handleAdd} user={currentUser}/>  
      <Pomdoro state={statep} closeHandler={closeHandler} setState={setStatep}/>
      <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
      <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}/>

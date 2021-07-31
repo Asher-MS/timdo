@@ -37,7 +37,7 @@ function Addtodo(props){
           <input type="time" id="tasktime" name="appt" required onChange={(e)=>{setTime(e.target.value)}}></input>
           <br></br>
           <Spacer y={3}/>
-          <Button type='secondary-light'onClick={()=>{props.handleAdd(title,content,time,userIp);}}>Add Task</Button>
+          <Button type='secondary-light'onClick={()=>{props.handleAdd(title,content,time,props.user);}}>Add Task</Button>
         </Modal.Content>
         
       </Modal>
