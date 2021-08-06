@@ -15,6 +15,7 @@ import Music from './components/music';
 import SpeedReader from './components/SpeedReader';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import './note.css';
 
 
 
@@ -143,7 +144,11 @@ function App() {
     </Row>
     <Row justify='center'>
       {currentUser==''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image src={profilePic}/>}
-      <Logout setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>
+      <Spacer x={1}/>
+      {currentUser==''?<Text
+      
+      
+      />:<Logout setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>}
 
     </Row>
     
@@ -179,6 +184,16 @@ function App() {
     <Button type="secondary" onClick={()=>{setVisible(true)}}>Add Task</Button>
     </Row>
     <Spacer y={3}/>
+    <div>
+       
+     <div class="ruled-paper" role="main">
+      <div class="ruled-paper-header"></div>
+      <div class="ruled-paper-body" contenteditable>
+        Hello world
+      </div>
+      </div>
+
+     </div>
     <Grid.Container gap={2} justify="center">
     {tasks.length==0?NoTask():(tasks.filter((task)=>{return task.email==currentUser}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
     </Grid.Container>
@@ -190,6 +205,7 @@ function App() {
      <Quote state={stateq} closeHandler={closeHandlerq} setState={setStateq}/>
      <Music state={statem} closeHandler={closeHandlerm} setState={setStatem}/>
      <SpeedReader state={states} closeHandler={closeHandlers} setState={setStates}/>
+     
      
     </div>
   );
