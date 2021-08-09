@@ -73,7 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 <p align="center">
 <img src="public/assets/tagline.png" width=600 height=60/>
 </p>
-View the app <a href="https://timdo-ochre.vercel.app/">here</a>
+View the app <a href="https://timdo.ashermathews.co/">https://timdo.ashermathews.co</a>
 <br><br>
 
 - Timdo is an web-app that helps the user to organise and make full use of his/her study time.
