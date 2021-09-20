@@ -10,7 +10,8 @@ const clientId="89388908397-fjpa865icojhk5tpfcr064e0msqbk09v.apps.googleusercont
 function Login(props){
     // Login Success
     const onSuccess=(res)=>{
-        console.log("Login Successfull Current User:",res.profileObj);
+        // console.log("Login Successfull Current User:",res.profileObj);
+        console.log("Login sucessfull")
         props.setCurrentUser(res.profileObj['email']);
         props.setProfilePic(res.profileObj["imageUrl"])
     }

@@ -11,6 +11,7 @@ function stopWebcam(){
  
 }
 return (
+
     <Modal {...props.bindings}>
         <Modal.Title>Timer</Modal.Title>
         

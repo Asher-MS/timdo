@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+
 import './App.css';
-import { GeistProvider, CssBaseline,Image,Card,Grid,Button,Spacer,useModal,Modal,Text,Toggle,Row } from '@geist-ui/react'
+import { GeistProvider, CssBaseline,Image,Grid,Button,Spacer,useModal,Text,Toggle,Row } from '@geist-ui/react'
 import { Sun,Moon } from '@geist-ui/react-icons'
 
 import React,{useState,useEffect} from 'react'
@@ -43,23 +43,23 @@ function App() {
   // }
   
   const [themeType,setThemeType]=useState("light");
-  const [userIp,setUserIp]=useState('');
+  // const [userIp,setUserIp]=useState('');
   const [currentUser,setCurrentUser]=useState('');
   const [profilePic,setProfilePic]=useState('');
-  useEffect(()=>{
-    axios.get("https://api.ipify.org/?format=json").then((res)=>{
+  // useEffect(()=>{
+  //   axios.get("https://api.ipify.org/?format=json").then((res)=>{
       
-      setUserIp(res.data['ip']);
+  //     setUserIp(res.data['ip']);
       
       
 
-    })
-  },[]);
+  //   })
+  // },[]);
   
 
   let themeChange=function(){
     console.log("Theme Change");
-    setThemeType(themeType=="light"?"dark":"light");
+    setThemeType(themeType==="light"?"dark":"light");
   }
   
   let [tasks,setTasks]=useState([{title:"Sample",body:"Sample",date:"Sample"}]);
@@ -90,9 +90,9 @@ function App() {
     setStates(false);
   }
   
-
+  const LOCAL=true;
   
-  const   API_URL="https://timdo-api.herokuapp.com/api/"
+  const   API_URL=LOCAL?"http://127.0.0.1:8000/api/":"https://timdo-api.herokuapp.com/api/"
   // const API_URL="http://127.0.0.1:8000/api/"
   
   let handleAdd=function(title,content,duration,email){
@@ -102,8 +102,8 @@ function App() {
     setVisible(false);
 
   }
-  let [currentTask,setCurrentTask]=useState();
-  let [currentDuration,setCurrentDuration]=useState();
+  // let [currentTask,setCurrentTask]=useState();
+  // let [currentDuration,setCurrentDuration]=useState();
   let handleDelete=function(title){
     axios.get(API_URL+'delete/'+title).then(()=>{updateTasks()});
     
@@ -123,7 +123,7 @@ function App() {
     axios.get(API_URL+"all").then(res=>{
       setTasks(res.data)
       
-    })
+    }).catch((e)=>{console.log(e)})
   },[]);
  
   const updateTasks=function(){
@@ -140,12 +140,12 @@ function App() {
     <GeistProvider themeType={themeType}>
     <CssBaseline />
     <Row justify='center'>
-    <Image width={200} height={200} src={themeType=="light"?"./assets/Capture-removebg-preview.png":"./assets/Capture-removebg-preview_darkmode.png"}/>
+    <Image width={200} height={200} src={themeType==="light"?"./assets/Capture-removebg-preview.png":"./assets/Capture-removebg-preview_darkmode.png"}/>
     </Row>
     <Row justify='center'>
-      {currentUser==''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image src={profilePic}/>}
+      {currentUser===''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image src={profilePic}/>}
       <Spacer x={1}/>
-      {currentUser==''?<Text
+      {currentUser===''?<Text
       
       
       />:<Logout setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>}
@@ -155,7 +155,7 @@ function App() {
     
     <Row justify="center">
     <Row justify="center"> 
-    <Text><Toggle onChange={themeChange}/>   Dark mode {themeType=="light"?<Sun/>:<Moon/>}</Text>
+    <Text><Toggle onChange={themeChange}/>   Dark mode {themeType==="light"?<Sun/>:<Moon/>}</Text>
     </Row>
     {/* <Button onClick={fullscreen}>Full</Button> */}
     
@@ -186,7 +186,7 @@ function App() {
     <Spacer y={3}/>
     
     <Grid.Container gap={2} justify="center">
-    {tasks.length==0?NoTask():(tasks.filter((task)=>{return task.email==currentUser}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
+    {tasks.length===0?NoTask():(tasks.filter((task)=>{return task.email===currentUser}).map(function(task){return <Grid xs={6}><Task title={task.title} body={task.body} duration={task.date} ip={task.ip} handleDelete={handleDelete}></Task></Grid>}))}
     </Grid.Container>
 
     </GeistProvider>
