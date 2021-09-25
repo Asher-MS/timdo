@@ -8,7 +8,7 @@ function NoteInput(props){
     let [title,setTitle]=useState('');
     let [body,setBody]=useState('');
     let local=true;
-    let NOTES_URL=local?"http://127.0.0.1:8000/api/notes/all":"";
+    let NOTES_URL=local?"http://127.0.0.1:8000/api/notes/all":"https://timdo-api.herokuapp.com/api/notes/all";
     function handleAdd(title,body){
         let email=window.localStorage.getItem('email');
         axios.post(NOTES_URL,{'title':title,'body':body,'email':email}).then(()=>{props.closeHandler();props.updateNotes();})
@@ -32,7 +32,7 @@ function NoteInput(props){
                 </Text>
             </Row>
             <Row justify='center'>
-            <Input placeholder="body" width="300px" height="500px" onChange={(e)=>{setBody(e.target.value)}}/>
+            <Textarea placeholder="body (supports markdown)" onChange={(e)=>{setBody(e.target.value)}}/>
             </Row>
             <Spacer y={2}/>
             <Row justify='center'>
