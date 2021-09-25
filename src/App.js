@@ -15,6 +15,15 @@ import Music from './components/music';
 import SpeedReader from './components/SpeedReader';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Notes from './components/Notes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
+
 
 
 
@@ -25,6 +34,18 @@ function NoTask(){
     <Text h1>No Task!!!!</Text>
     <Image src="https://media.giphy.com/media/Qg6cn9VrzNNKg/giphy.gif"></Image>
     </div>
+  );
+}
+
+
+let Page=function(){
+  return(
+    <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={App}/>
+      <Route path="/notes" component={Notes}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
@@ -44,14 +65,18 @@ function App() {
   
   const [themeType,setThemeType]=useState("light");
   // const [userIp,setUserIp]=useState('');
-  const [currentUser,setCurrentUser]=useState('');
   const [profilePic,setProfilePic]=useState('');
+  const [currentUser,setCurrentuser]=useState('');
   // useEffect(()=>{
   //   axios.get("https://api.ipify.org/?format=json").then((res)=>{
       
   //     setUserIp(res.data['ip']);
       
-      
+  function setCurrentUser(email){
+    setCurrentuser(email);
+    window.localStorage.setItem('email',email);
+    
+  }
 
   //   })
   // },[]);
@@ -73,6 +98,7 @@ function App() {
   const handlerq=()=>{setStateq(true)};
   const handlerm=()=>{setStatem(true)};
   const handlers=()=>{setStates(true)};
+  const handlern=()=>{};
   const closeHandler = (event) => {
     setStatep(false)
     console.log('closed')
@@ -176,6 +202,11 @@ function App() {
     </Row>
     <Spacer y={1}/>
     <Row justify='center'>
+      <Link to="/notes"><Button type='success-light' onClick={handlern}>Notes</Button></Link>
+
+    </Row>
+    <Spacer y={1}/>
+    <Row justify='center'>
     <Button type='success-light' onClick={handlers}>Speed reading</Button>
 
     </Row>
@@ -202,4 +233,4 @@ function App() {
   );
 }
 
-export default App;
+export default Page;
