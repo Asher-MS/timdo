@@ -116,7 +116,7 @@ function App() {
     setStates(false);
   }
   
-  const LOCAL=false;
+  const LOCAL=true;
   
   const   API_URL=LOCAL?"http://127.0.0.1:8000/api/":"https://timdo-api.herokuapp.com/api/"
   // const API_URL="http://127.0.0.1:8000/api/"

@@ -26,7 +26,7 @@ function Notes(props){
     let [currentNote,setCurrentNote]=useState({'title':'title','body':'body'});
     
     let local=true;
-    let NOTES_URL=local?"http://127.0.0.1:8000/api/notes?email="+email:"";
+    let NOTES_URL=local?"http://127.0.0.1:8000/api/notes?email="+email:"https://timdo-api.herokuapp.com/api/notes?email="+email;
     function NoteCard(title,body){
         return (<div><Card shadow>
                     <h4>{title}</h4>
@@ -61,6 +61,7 @@ function Notes(props){
                 Add Note
             </Button>
         </Row>
+        <Spacer y={2}/>
         <Row justify="center">
         <Text h1>{notes.map((note)=>{return NoteCard(note.title,note.body
             )})}</Text>
