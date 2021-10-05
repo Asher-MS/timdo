@@ -76,10 +76,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 View the app <a href="https://timdo.ashermathews.co/">https://timdo.ashermathews.co</a>
 <br><br>
 
-- Timdo is an web-app that helps the user to organise and make full use of his/her study time.
-- Timdo is basically a timer app that helps you organise your study times.
-- It also has a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">pomdoro</a> timer which helps to manage you time effectively
-- it also has a focus meter which uses machine learning to analyse your level of focus and alert you when necessary.
+- Timdo is a web-app that helps the user to organise and make full use of his/her study time.
+- Timdo is basically a timer app that helps you organise your study time.
+- It also has a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">pomdoro</a> timer which helps to manage your time effectively
+- it even has a focus meter which uses machine learning to analyse your level of focus and alert you when necessary.
 
 # Technologies Used
 
