@@ -24,12 +24,17 @@ function Notes(props){
     let [email,setUserEmail]=useState(window.localStorage.getItem('email'));
     let [notes,setNotes]=useState([{}]);
     let [currentNote,setCurrentNote]=useState({'title':'title','body':'body'});
-    
+    let handleEdit=function(title,body){
+        // Add the function to edit a note
+        console.log(title,body);
+    }
     let local=true;
     let NOTES_URL=local?"http://127.0.0.1:8000/api/notes?email="+email:"https://timdo-api.herokuapp.com/api/notes?email="+email;
     function NoteCard(title,body){
         return (<div><Card shadow>
                     <h4>{title}</h4>
+                    <Button type="error-light" onClick={handleEdit}>Edit</Button>
+                    
                     <Button onClick={()=>{setStaten(true);setCurrentNote({'title':title,'body':body})}}>View</Button>
                 </Card><Spacer y={1}/></div>);
     }

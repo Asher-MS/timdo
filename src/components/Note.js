@@ -7,7 +7,7 @@ function Note(props){
     let body=converter.makeHtml(props.body);
 
     return (
-        <Modal open={props.state} onClose={props.closeHandler}>
+        <Modal open={props.state} onClose={props.closeHandler} width="100rem" height="200rem">
             <Modal.Content>
                 <Row justify='center'>
                 <h2>{props.title}</h2>
