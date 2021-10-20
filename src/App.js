@@ -169,7 +169,7 @@ function App() {
     <Image width={200} height={200} src={themeType==="light"?"./assets/Capture-removebg-preview.png":"./assets/Capture-removebg-preview_darkmode.png"}/>
     </Row>
     <Row justify='center'>
-      {currentUser===''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image src={profilePic}/>}
+      {currentUser===''?<Login setCurrentUser={setCurrentUser} setProfilePic={setProfilePic}/>:<Image className="profilepic" src={profilePic}/>}
       <Spacer x={1}/>
       {currentUser===''?<Text
       

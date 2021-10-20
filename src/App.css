@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.profilepic {
+
+    align-self: center;
+    left:65px;
+ 
+}
