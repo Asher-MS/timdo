@@ -94,7 +94,9 @@ the front-end communicates with backend using an API which uses Json to carry da
 The API is hosted <a href="https://timdo-api.herokuapp.com/api/all">here</a>
 <br><br>
 The Machine learning model is built using <a href="https://teachablemachine.withgoogle.com/">google's teachable machine</a>
-<a href="https://github.com/Asher-MS/timdo/blob/master/README.md#contributing">Contributing</a>
+<br>
+
+## <a href="https://github.com/Asher-MS/timdo/blob/master/README.md#contributing">Contributing</a>
 ## Setup
 
 ```
