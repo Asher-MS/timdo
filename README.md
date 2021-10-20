@@ -149,3 +149,6 @@ It uses Machine Learning to analyze your facial and body expressions to measure 
 
 
 ## Note: Please Turn off brave sheilds if you are using BraveBrowser for the proper functioning of the app
+
+## Contributing
+Please read the <a href="https://github.com/Asher-MS/timdo/blob/master/CONTRIBUTING.md">contribution guidelines</a> before contributing
