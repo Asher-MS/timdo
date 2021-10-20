@@ -81,7 +81,6 @@ View the app <a href="https://timdo.ashermathews.co/">https://timdo.ashermathews
 - It also has a <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">pomdoro</a> timer which helps to manage your time effectively
 - it even has a focus meter which uses machine learning to analyse your level of focus and alert you when necessary.
 
-## <a href="https://github.com/Asher-MS/timdo/blob/master/README.md#contributing">Contributing</a>
 
 # Technologies Used
 
