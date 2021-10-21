@@ -89,7 +89,7 @@ and the a library named <a href="https://react.geist-ui.dev/">geist-ui</a> is us
 <br><br>
 Timdo also has a backend which is built using <a href="https://www.djangoproject.com/">Django</a>
 and uses <a href="https://www.sqlite.org/index.html">Sqllite</a> as a database.<br>
-the front-end communicates with backend using an API which uses Json to carry data<br>
+
 <a href="https://github.com/Asher-MS/timdo_api">Link to the API repo</a>
 <br><br>
 The API is hosted <a href="https://timdo-api.herokuapp.com/api/all">here</a>
